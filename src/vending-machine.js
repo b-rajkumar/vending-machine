@@ -1,6 +1,6 @@
-const one = 1;
-const two = 2;
+const dispenseCoins = function(amount) {
+  return amount;
+}
 
-exports.one = one;
-exports.two = two;
+exports.dispenseCoins = dispenseCoins;
 
