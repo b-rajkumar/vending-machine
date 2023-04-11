@@ -1,13 +1,5 @@
-const numberOfOneRupeeCoins = function(amount) {
-  return amount;
-}
-
-const numberOfTwoRupeeCoins = function(amount) {
-  return Math.trunc(amount/2);
-}
-
-const numberOfFiveRupeeCoins = function(amount) {
-  return Math.trunc(amount/5);
+const numberOfCoins = function(amount, coinValue) {
+  return Math.trunc(amount/coinValue);
 }
 
 const calculateRemainingAmount = function(amount, coinValue, numberOfCoins) {
@@ -16,18 +8,14 @@ const calculateRemainingAmount = function(amount, coinValue, numberOfCoins) {
 
 const dispenseCoins = function(amount) {
   let totalCoins = 0;
+  const coins = [10, 5, 2, 1];
+  let remainingAmount = amount;
 
-
-  const fiveRupeeCoins = numberOfFiveRupeeCoins(amount);
-  let remainingAmount = calculateRemainingAmount(amount, 5, fiveRupeeCoins); 
-  totalCoins += fiveRupeeCoins; 
-
-  const twoRupeeCoins = numberOfTwoRupeeCoins(remainingAmount);
-  remainingAmount = calculateRemainingAmount(remainingAmount, 2, twoRupeeCoins); 
-  totalCoins += twoRupeeCoins; 
-
-  totalCoins += numberOfOneRupeeCoins(remainingAmount); 
-
+  for (const coinValue of coins) {
+    const coinsCount = numberOfCoins(remainingAmount, coinValue);
+    totalCoins += coinsCount;
+    remainingAmount = calculateRemainingAmount(remainingAmount, coinValue, coinsCount); 
+  }
 
   return totalCoins;
 }
