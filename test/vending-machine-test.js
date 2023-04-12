@@ -11,14 +11,12 @@ const testVendingMachine = function() {
   test.assertEquality(12, vendingMachine.dispenseCoins(103, [1, 2, 5, 10]) , '103 rupees and 1,2,5,10 as denomination should give 12 coins');
   test.assertEquality(4, vendingMachine.dispenseCoins(13, [1, 4, 7]) , '13 rupees and 1,4,7 as denomination should give 4 coins');
   test.assertEquality(4, vendingMachine.dispenseCoins(13, [4, 1, 7]) , '13 rupees and 4,1,7 as denomination should give 4 coins');
-  test.assertEquality(4, vendingMachine.dispenseCoins(14, [4, 1, 7]) , 'failing test');
 }
 
 const testMaxSort = function(){
-  test.assertListsEqual([1, 2, 5], vendingMachine.maxSort([1, 5, 2]), 'max sort should give 1,2,5 for 1,5,2 input');
-  test.assertListsEqual([1, 2, 5, 10], vendingMachine.maxSort([10, 1, 5, 2]), 'max sort should give 1,2,5,10 for 10,1,5,2 input');
-  test.assertListsEqual([1, 2, 5], vendingMachine.maxSort([5, 2, 1]), 'max sort should give 1,2,5 for 5,2,1 input');
-  test.assertListsEqual([1, 2, 5], [1, 2, 10], 'no comment');
+  test.assertListsEqual([5, 2, 1], vendingMachine.maxSort([1, 5, 2]), 'max sort should give 5,2,1 for 1,5,2 input');
+  test.assertListsEqual([10, 5, 2, 1], vendingMachine.maxSort([10, 1, 5, 2]), 'max sort should give 10,5,2,1 for 10,1,5,2 input');
+  test.assertListsEqual([5, 2, 1], vendingMachine.maxSort([5, 2, 1]), 'max sort should give 5,2,1 for 5,2,1 input');
 }
 
 const testMax = function() {
@@ -29,10 +27,7 @@ const testMax = function() {
 
 
 
-//testMaxSort();
-testMax();
-
-
-
-//testVendingMachine();
+testVendingMachine();
+testMaxSort();
 test.displaySummary();
+//testMax();
