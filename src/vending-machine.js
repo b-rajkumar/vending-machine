@@ -52,5 +52,3 @@ const dispenseCoins = function(amount, denomination) {
 exports.dispenseCoins = dispenseCoins;
 exports.maxSort = maxSort;
 exports.max = max;
-
-
