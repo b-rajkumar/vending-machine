@@ -22,22 +22,18 @@ const max = function(list) {
 }
 
 const maxSort = function(denominationSet) {
-  let denomination = denominationSet.slice();
+  const denomination = denominationSet.slice();
+  const sortedDenominationSet = [];
 
   for (let index = 0; index < denominationSet.length; index++) {
-    let maxDenomination = denomination[index];
-    let IndexOfmax = index;
-    for (let pos = index; pos < denominationSet.length; pos++) {
-      if (maxDenomination < denomination[pos]) {
-        maxDenomination = denomination[pos];
-        IndexOfmax = pos;
-      }
-    }
+    let maxDenomination = max(denomination);
+    let IndexOfmax = denomination.indexOf(maxDenomination);
+    sortedDenominationSet.push(maxDenomination);
+    denomination.splice(IndexOfmax, 1);
+  }
+  return sortedDenominationSet;
+}  
 
-    swap(denomination, index, IndexOfmax);
-  }  
-  return denomination;
-}
 
 const dispenseCoins = function(amount, denomination) {
   let totalCoins = 0;
