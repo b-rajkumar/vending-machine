@@ -9,6 +9,8 @@ const testVendingMachine = function() {
   test.assertEquality(1, vendingMachine.dispenseCoins(10, [10]), '10 rupees and 10 as denomination should give 1 coin');
   test.assertEquality(9, vendingMachine.dispenseCoins(45, [1, 10]) , '45 rupees and 1,10 as denomination should give 9 coins');
   test.assertEquality(12, vendingMachine.dispenseCoins(103, [1, 2, 5, 10]) , '103 rupees and 1,2,5,10 as denomination should give 12 coins');
+  test.assertEquality(4, vendingMachine.dispenseCoins(13, [1, 4, 7]) , '13 rupees and 1,4,7 as denomination should give 4 coins');
 }
 
 testVendingMachine();
+test.displaySummary();
