@@ -1,6 +1,14 @@
 const test = require('../lib/test-framework.js');
 const vendingMachine = require('../src/vending-machine.js');
 
+const testMaxSort = function(){
+  test.headLine('Testing maxSort function');
+  test.assertListsEqual([5, 2, 1], vendingMachine.maxSort([1, 5, 2]), 'max sort should give 5,2,1 for 1,5,2 input');
+  test.assertListsEqual([10, 5, 2, 1], vendingMachine.maxSort([10, 1, 5, 2]), 'max sort should give 10,5,2,1 for 10,1,5,2 input');
+  test.assertListsEqual([5, 2, 1], vendingMachine.maxSort([5, 2, 1]), 'max sort should give 5,2,1 for 5,2,1 input');
+  console.log();
+}
+
 const testVendingMachine = function() {
   test.headLine('Testing dispenseCoins function');
   test.assertEquality(0, vendingMachine.dispenseCoins(10, []), '10 rupees and zero denominations should give 0');
@@ -16,25 +24,9 @@ const testVendingMachine = function() {
   console.log();
 }
 
-const testMax = function() {
-  test.headLine('Testing max function');
-  test.assertEquality(4, vendingMachine.max([2, 4, 1, 3]), '4 should be the max value of 2, 4, 1, 3');
-  test.assertEquality(5, vendingMachine.max([5]), '5 should be the max value of 5');
-  console.log();
-}
-
-const testMaxSort = function(){
-  test.headLine('Testing maxSort function');
-  test.assertListsEqual([5, 2, 1], vendingMachine.maxSort([1, 5, 2]), 'max sort should give 5,2,1 for 1,5,2 input');
-  test.assertListsEqual([10, 5, 2, 1], vendingMachine.maxSort([10, 1, 5, 2]), 'max sort should give 10,5,2,1 for 10,1,5,2 input');
-  test.assertListsEqual([5, 2, 1], vendingMachine.maxSort([5, 2, 1]), 'max sort should give 5,2,1 for 5,2,1 input');
-  console.log();
-}
-
 const runTests = function() {
-  testVendingMachine();
-  testMax();
   testMaxSort();
+  testVendingMachine();
   test.displaySummary();
 }
 

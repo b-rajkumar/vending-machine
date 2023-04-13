@@ -6,34 +6,24 @@ const calculateRemainingAmount = function(amount, denominationValue, numberOfCoi
   return amount - (denominationValue * numberOfCoins);
 }
 
-const swap = function(list, firstIndex, secondIndex) {
-  const firstNumber = list[firstIndex];
-  list[firstIndex] = list[secondIndex];
-  list[secondIndex] = firstNumber;
-  return list;
-}
-
-const max = function(list) {
-  let max = list[0];
-  for (let index = 0; index < list.length; index++) {
-    max = (list[index] < max) ? max : list[index];
-  }
-  return max;
-}
-
 const maxSort = function(denominationSet) {
-  const denomination = denominationSet.slice();
-  const sortedDenominationSet = [];
+  const sortedDenomination = denominationSet.slice();
 
   for (let index = 0; index < denominationSet.length; index++) {
-    let maxDenomination = max(denomination);
-    let IndexOfmax = denomination.indexOf(maxDenomination);
-    sortedDenominationSet.push(maxDenomination);
-    denomination.splice(IndexOfmax, 1);
+    let maxDenomination = sortedDenomination[index];
+    let indexOfmax = index; 
+    for (let pos = index; pos < denominationSet.length; pos++) {
+      if (sortedDenomination[pos] > maxDenomination) {
+        maxDenomination = sortedDenomination[pos];
+        indexOfmax = pos;
+      }
+    }
+    let number = sortedDenomination[index];
+    sortedDenomination[index] = maxDenomination;
+    sortedDenomination[indexOfmax] = number;
   }
-  return sortedDenominationSet;
-}  
-
+  return sortedDenomination;
+}
 
 const dispenseCoins = function(amount, denomination) {
   let totalCoins = 0;
@@ -51,4 +41,3 @@ const dispenseCoins = function(amount, denomination) {
 
 exports.dispenseCoins = dispenseCoins;
 exports.maxSort = maxSort;
-exports.max = max;
