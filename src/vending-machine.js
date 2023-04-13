@@ -25,33 +25,34 @@ const maxSort = function(denominationSet) {
   return sortedDenomination;
 }
 
-const dispenseCoins = function(amount, denomination) {
+const computeCoinCount = function(amount, denomination) {
   let totalCoins = 0;
   const denominationSet = maxSort(denomination);
   let remainingAmount = amount;
 
   for (const denominationValue of denominationSet) {
-    const coinsCount = numberOfCoins(remainingAmount, denominationValue);
-    totalCoins += coinsCount; 
-    remainingAmount = calculateRemainingAmount(remainingAmount, denominationValue, coinsCount); 
+    const dispensedCoins = numberOfCoins(remainingAmount, denominationValue);
+    totalCoins += dispensedCoins; 
+    remainingAmount = calculateRemainingAmount(remainingAmount, denominationValue, dispensedCoins); 
   }
 
   return totalCoins;
 }
 
-const coinsByDenominations = function(amount, denomination) {
-  let coinsCounts = {};
+const computeCountByDenominations = function(amount, denomination) {
+  let dispensedCoins = {};
   const denominationSet = maxSort(denomination);
   let remainingAmount = amount;
 
   for (const denominationValue of denominationSet) {
     const coinsCount = numberOfCoins(remainingAmount, denominationValue);
-    coinsCounts[denominationValue] = coinsCount;
+    if (coinsCount !== 0) dispensedCoins[denominationValue] = coinsCount;
     remainingAmount = calculateRemainingAmount(remainingAmount, denominationValue, coinsCount); 
   }
-  return coinsCounts;
+
+  return dispensedCoins;
 }
 
-exports.dispenseCoins = dispenseCoins;
+exports.computeCoinCount = computeCoinCount;
 exports.maxSort = maxSort;
-exports.coinsByDenominations = coinsByDenominations;
+exports.computeCountByDenominations = computeCountByDenominations;
