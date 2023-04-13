@@ -39,7 +39,7 @@ const dispenseCoins = function(amount, denomination) {
   return totalCoins;
 }
 
-const coins = function(amount, denomination) {
+const coinsByDenominations = function(amount, denomination) {
   let coinsCounts = {};
   const denominationSet = maxSort(denomination);
   let remainingAmount = amount;
@@ -54,4 +54,4 @@ const coins = function(amount, denomination) {
 
 exports.dispenseCoins = dispenseCoins;
 exports.maxSort = maxSort;
-exports.coins = coins;
+exports.coinsByDenominations = coinsByDenominations;

@@ -26,10 +26,11 @@ const testVendingMachine = function() {
 
 const testCoins = function() {
   test.headLine('Testing Coins function');
-  test.assertObjectsEqual({7:1, 1:2, 4:1}, vendingMachine.coins(13, [4, 1, 7]) , '13 rupees and 4,1,7 as denominations should give 7:1, 4:1, 1:2');
-  test.assertObjectsEqual({10:4, 1:5}, vendingMachine.coins(45, [1, 10]) , '45 rupees and 1,10 as denominations should give 10:4, 1:5 coins');
-  test.assertObjectsEqual({10:10, 5:0, 2:1, 1:1}, vendingMachine.coins(103, [1, 2, 5, 10]) , '103 rupees and 1,2,5,10 as denominations should give 10:10, 5:0, 2:1, 1:1 coins');
+  test.assertObjectsEqual({7:1, 1:2, 4:1}, vendingMachine.coinsByDenominations(13, [4, 1, 7]) , '13 rupees and 4,1,7 as denominations should give 7:1, 4:1, 1:2');
+  test.assertObjectsEqual({10:4, 1:5}, vendingMachine.coinsByDenominations(45, [1, 10]) , '45 rupees and 1,10 as denominations should give 10:4, 1:5 coinsByDenominations');
+  test.assertObjectsEqual({10:10, 5:0, 2:1, 1:1}, vendingMachine.coinsByDenominations(103, [1, 2, 5, 10]) , '103 rupees and 1,2,5,10 as denominations should give 10:10, 5:0, 2:1, 1:1 coinsByDenominations');
 }
+
 const runTests = function() {
   testMaxSort();
   testVendingMachine();
