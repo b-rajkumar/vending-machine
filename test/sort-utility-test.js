@@ -13,8 +13,6 @@ const testSelectionSort = function() {
   assertListsEqual([10], selectionSort([10]),'Testing for single element');
   assertListsEqual([5, 13, 25], selectionSort([5, 25, 13]),'Testing for positive elements in the list');
   assertListsEqual([-9, 0, 1, 2, 5, 123], selectionSort([5, 2, 1, -9, 123, 0]),'Testing for integers');
-
-  console.log();
 }
 
 const testBubbleSort = function() {
@@ -24,9 +22,8 @@ const testBubbleSort = function() {
   assertListsEqual([10], bubbleSort([10]),'Testing for single element');
   assertListsEqual([5, 13, 25], bubbleSort([5, 25, 13]),'Testing for positive elements in the list');
   assertListsEqual([-9, 0, 1, 2, 5, 123], bubbleSort([5, 2, 1, -9, 123, 0]),'Testing for integers');
-
-  console.log();
 }
 
 testSelectionSort();
 testBubbleSort();
+displaySummary();

@@ -10,28 +10,58 @@ const vendCoins = vendingMachine.vendCoins;
 const testOrderedDenominations = function() {
   headLine('Testing vendCoins function for ordered denominations');
 
-  assertEquality(0, vendCoins(10, []),'Testing for zero denominations should give 0');
-  assertEquality(0, vendCoins(1, [5]),'Testing for amount less than denominations should give 0');
-  assertEquality(1, vendCoins(10, [10]),'Testing for denomination value equal to amount should give 1 coin');
-  assertEquality(12, vendCoins(103, [1, 2, 5, 10]), 'Testing for a set of denominations should give optimum coins');
+  let message = 'Zero denominations should give 0' 
+  let expected = vendCoins(10, [])
+  let actual = 0;
+  assertEquality(expected, actual, message);
 
-  console.log();
+  message = 'Amount less than denominations should give 0' 
+  expected = vendCoins(1, [5])
+  actual = 0;
+  assertEquality(expected, actual, message);
+
+  message = 'Denomination value equal to amount should give 1 coin' 
+  actual = 1;
+  expected = vendCoins(10, [10])
+  assertEquality(expected, actual, message);
+
+  message = 'A set of denominations should give optimum coins' 
+  actual = 12;
+  expected = vendCoins(103, [1, 2, 5, 10]);
+  assertEquality(expected, actual, message);
 }
 
 const testUnorderedDenominations = function() {
   headLine('Testing vendCoins function for unordered denominations');
 
-  assertEquality(0, vendCoins(1, []),'Testing for no denominations should give 0');
-  assertEquality(4, vendCoins(13, [4, 1, 7]),'Testing for unordered set of denominations');
+  let message = 'Zero denominations should give 0';
+  let expected = vendCoins(1, []);
+  let actual = 0;
+  assertEquality(expected, actual, message);
 
-  console.log();
+  message = 'Unordered set of denominations should give optimum coins';
+  expected = vendCoins(13, [4, 1, 7]);
+  actual = 4;
+  assertEquality(expected, actual, message);
 }
 
 const testCoinsByDenominationsFn = function() {
   headLine('Testing CoinsByDenominations function');
-  assertObjectsEqual({}, coinsOfDenominations(45, []),'Testing for 0 denomination should give nothing');
-  assertObjectsEqual({5:9}, coinsOfDenominations(45, [5]),'Testing for one denomination should give the coin count');
-  assertObjectsEqual({7:1, 1:2, 4:1}, coinsOfDenominations(13, [4, 1, 7]),'Testing for a set of denominations should give coin count of each denomination');
+
+  let message = 'Zero denominations should give 0';
+  let expected = coinsOfDenominations(45, []);
+  let actual = {};
+  assertObjectsEqual(expected, actual, message);
+
+  message = 'Only one denomination should give the coin count';
+  expected = coinsOfDenominations(45, [5]);
+  actual = {5:9};
+  assertObjectsEqual(expected, actual, message);
+
+  message = 'A set of denominations should give coin count of each denomination';
+  expected = coinsOfDenominations(13, [4, 1, 7]);
+  actual = {7:1, 1:2, 4:1};
+  assertObjectsEqual(expected, actual, message);
 }
 
 const runTests = function() {
